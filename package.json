@@ -1,0 +1,14 @@
+{
+  "name": "reality-bot",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Hlídač pronájmů v Praze bez realitky",
+  "scripts": {
+    "start": "node server.js",
+    "check": "node src/check.js"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

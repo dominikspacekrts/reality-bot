@@ -1,0 +1,38 @@
+{
+  "search": {
+    "maxTotalPrice": 25000,
+    "stretchMaxTotalPrice": 30000,
+    "stretchMinScore": 60,
+    "estimatedFeesWhenUnknown": 3500,
+    "energyEstimate": 1500,
+    "minRooms": 2,
+    "minLocalityScore": 6,
+    "ignoreLocality": true,
+    "allowCompanyLandlords": false,
+    "maxAgeDays": 60,
+    "moveInDate": "2027-01-01"
+  },
+  "schedule": [
+    "08:00",
+    "19:00"
+  ],
+  "server": {
+    "port": 4747
+  },
+  "email": {
+    "enabled": false,
+    "transport": "rts-control",
+    "to": "",
+    "rtsControl": {
+      "endpoint": "",
+      "apiKey": ""
+    }
+  },
+  "push": {
+    "enabled": true,
+    "provider": "ntfy",
+    "server": "https://ntfy.sh",
+    "topic": "",
+    "maxPerRun": 8
+  }
+}

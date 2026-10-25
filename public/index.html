@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Byty bez realitky</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="top">
+    <div class="wrap">
+      <div class="brand">
+        <h1>Byty bez realitky</h1>
+        <p id="criteria" class="muted"></p>
+      </div>
+      <div class="status">
+        <span id="status" class="muted"></span>
+        <button id="checkBtn" class="btn">Zkontrolovat teď</button>
+      </div>
+    </div>
+    <div id="progress" class="progress" hidden><span></span></div>
+  </header>
+
+  <main class="wrap">
+    <nav class="bar">
+      <div class="tabs" role="tablist">
+        <button data-tab="active" class="tab is-on">Doporučené <span class="count" id="c-active"></span></button>
+        <button data-tab="favorite" class="tab">Oblíbené <span class="count" id="c-favorite"></span></button>
+        <button data-tab="rejected" class="tab">Vyřazené <span class="count" id="c-rejected"></span></button>
+        <button data-tab="inactive" class="tab">Neaktivní <span class="count" id="c-inactive"></span></button>
+      </div>
+      <div class="filters">
+        <label class="chk" title="Nevyřazovat podle lokality a nezapočítávat ji do skóre"><input type="checkbox" id="fAnyLocality"> celá Praha</label>
+        <label class="chk"><input type="checkbox" id="fParking"> parkování</label>
+        <label class="chk"><input type="checkbox" id="fOld"> starší dům</label>
+        <label class="chk"><input type="checkbox" id="fHidden"> skryté</label>
+        <select id="sort" aria-label="Řazení">
+          <option value="score">Podle shody</option>
+          <option value="price">Od nejlevnějšího</option>
+          <option value="new">Nejnovější</option>
+          <option value="area">Od největšího</option>
+          <option value="kitchen">Podle kuchyně</option>
+          <option value="moveIn">Podle nastěhování</option>
+        </select>
+      </div>
+    </nav>
+
+    <p id="hint" class="hint muted"></p>
+    <section id="list" class="grid" aria-live="polite"></section>
+  </main>
+
+  <script src="app.js" type="module"></script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+node_modules/
+data/check.lock
+data/progress.json
+data/*.tmp
+outbox/
+logs/
+site/
+.env.local
+.DS_Store
+data/
