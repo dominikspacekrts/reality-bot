@@ -28,6 +28,7 @@ export function buildPayload({ isStatic = false } = {}) {
     running,
     progress: running ? getProgress() : null,
     nextRun: nextRun(cfg.schedule),
+    schedule: cfg.schedule,
     search: cfg.search,
     emailEnabled: Boolean(cfg.email?.enabled),
     pushEnabled: Boolean(cfg.push?.enabled),

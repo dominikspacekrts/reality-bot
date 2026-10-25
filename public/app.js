@@ -61,7 +61,8 @@ function renderHeader() {
   const pct = data.progress?.percent ?? 0;
   if (data.running) parts.push(`Kontroluji inzeráty… ${pct} %${data.progress?.phase ? ` (${data.progress.phase})` : ''}`);
   else if (r) parts.push(`Poslední kontrola ${dateTime(r.finishedAt || r.at)} · otevřeno ${r.opened} inzerátů`);
-  if (data.nextRun) parts.push(`další ${dateTime(data.nextRun)}`);
+  const next = nextRunLocal(data.schedule) || data.nextRun;
+  if (next) parts.push(`další ${dateTime(next)}`);
   parts.push(data.pushEnabled ? 'upozornění na telefon zapnutá' : 'upozornění na telefon vypnutá');
   if (data.static) parts.push('běží v cloudu');
   $('#status').textContent = parts.join(' · ');
@@ -70,6 +71,22 @@ function renderHeader() {
   $('#checkBtn').textContent = data.running ? `Kontroluji… ${pct} %` : 'Zkontrolovat teď';
   $('#progress').hidden = !data.running;
   $('#progress span').style.width = `${pct}%`;
+}
+
+// Schedule times are Prague times; the build server runs in UTC, so work it out here.
+function nextRunLocal(schedule) {
+  if (!schedule?.length) return null;
+  const now = new Date();
+  for (let day = 0; day < 2; day++) {
+    for (const t of schedule) {
+      const [h, m] = t.split(':').map(Number);
+      const d = new Date(now);
+      d.setDate(d.getDate() + day);
+      d.setHours(h, m, 0, 0);
+      if (d > now) return d.toISOString();
+    }
+  }
+  return null;
 }
 
 function bucket(l) {
